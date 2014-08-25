@@ -1,0 +1,48 @@
+@(user: User, resources: List[Resource])
+
+@main("Library of Awesomes") {
+        <p>welcome @user.getName</p>
+        #{loginStatus.scala /}
+<h1>Search Lib</h1>
+<script src='@routes.Assets.at("javascripts/index.js")'></script>
+
+<form action="@routes.Application.searchResource()" method="post">
+    <div class="form-group">
+        <label>Search Name</label>
+        <input name="name"></div>
+
+    <input type="submit">
+
+</form>
+<p>List of resources in library</p>
+<div class="container">
+    <p>List of Categories in library</p>
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>Name</th>
+            <th>availability</th>
+            <th>Manage</th>
+        </tr>
+        @for(res <- resources){
+
+        <tr>
+            <td>@res.getName BY @res.getAuthor</td>
+            <td>@res.isAvailable</td>
+            <td><a href="@routes.Application.borrowResource(user.getId,res.getId)">Borrow</a></td>
+        </tr>
+        }
+
+
+    </table>
+    <!--<ul id="stuff">routes.CategoryControl.deleteCategory(section.getId())</ul>-->
+</div>
+<ul id="stuff">
+    }{
+    <h1>Admin</h1>
+    <ul>
+        <li><h3><a href="/">Search resources</a></h3></li>
+        <li><h3><a href="/addSection">Manage Section</a></h3></li>
+        <li><h3><a href="/addCategory">Manage Category</a></h3></li>
+        <li><h3><a href="/addResource">Add Resource</a></h3></li>
+    </ul>
+    }

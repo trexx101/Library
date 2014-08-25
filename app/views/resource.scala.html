@@ -1,0 +1,61 @@
+@(section: List[Section], shelf: List[Category], resources: List[Resource])
+
+@main("Library of Awesomes") {
+<h1>Add new resources</h1>
+<script src='@routes.Assets.at("javascripts/index.js")'></script>
+
+<form action="@routes.Application.addResource()" method="post">
+    <div class="form-group">
+        <label>Resource Name</label>
+        <input name="name"></div>
+
+    <div class="form-group">
+        <label>Author Name</label>
+        <input name="author"></div>
+
+    <div class="form-group">
+        <label>Section</label>
+        <select name="section.getId" id="section" >
+
+            @for(s <- section){
+            <option value="@s.getId">@s.getName</option>
+            }
+        </select></div>
+
+    <div class="form-group">
+        <label>Shelf</label>
+        <select name="shelf.getId" id="shelf.getId" >
+            @for(c <- shelf){
+            <option value="@c.getId">@c.getName</option>
+            }
+        </select></div>
+
+    <input type="submit">
+
+</form>
+
+<br>
+<br>
+<div class="container">
+    <p>List of resources in library</p>
+    <table class="table table-bordered">
+        <tr><th>Name</th><th>Author</th><th>Section</th><th>Shelf</th><th>Available</th><th>Manage</th></tr>
+        @for(resource <- resources){
+
+        <tr><td>@resource.getName</td><td>@resource.getAuthor</td><td>@resource.getSection()</td><td>@resource.getName</td><td>@resource.getName</td><td><a href="">Delete</a> </td></tr>
+        }
+
+
+    </table>
+    <!--<ul id="stuff">routes.CategoryControl.deleteCategory(section.getId())</ul>-->
+</div>
+}{
+<h2>Admin</h2>
+<ul>
+    <li><h3><a href="/">Search resources</a></h3></li>
+    <li><h3><a href="/addSection">Manage Section</a></h3></li>
+    <li><h3><a href="/addCategory">Manage Category</a></h3></li>
+    <li><h3><a href="/addResource">Add Resource</a></h3></li>
+</ul>
+
+}

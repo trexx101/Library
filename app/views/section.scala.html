@@ -1,0 +1,31 @@
+@(message: String, Sections: List[Section])
+@main("Library of Awesomess") {
+<h1>Search Lib</h1>
+<script src='@routes.Assets.at("javascripts/index.js")'></script>
+
+<form action="@routes.SectionControl.index()" method="post">
+    <p><label>Section Name</label><input name="name"></p>
+    <p><label>Section Borrowable</label><input type="checkbox" name="borrowable" value="true" /></p>
+    <input type="submit">
+
+</form>
+        <br>
+        <div class="container">
+<p>List of Sections in library</p>
+        <table class="table table-bordered">
+            <tr><th>Name</th><th>borrowable</th><th>Manage</th></tr>
+                @for(section <- Sections){
+
+            <tr><td>@section.getName</td><td>@section.isBorrowable</td><td><a href="routes.SectionControl.deleteSection(section.getId)">Delete</a> </td></tr>
+                }
+
+
+        </table>
+<!--<ul id="stuff"></ul>-->
+        </div>
+}{
+<h1>Admin</h1>
+<h3><a href="/">Resource</a></h3>
+
+<h3><a href="/addSection">Manage Section</a></h3>
+}

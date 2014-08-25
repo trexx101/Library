@@ -1,0 +1,8 @@
+<div class="loginStatus">
+   #{if session.login}
+    Welcome user ${session.login}
+    #{/if}
+    #{else}
+    Not Logged in
+    #{/else}
+</div>

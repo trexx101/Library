@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+POST     /                           controllers.Application.searchResource()
+POST    /addResource                controllers.Application.addResource()
+GET     /addResource                controllers.Application.manageResource()
+#GET     /listResources              controllers.Application.getResource()
+GET     /addSection                 controllers.SectionControl.index()
+POST    /addSection                 controllers.SectionControl.addSection()
+GET     /addCategory                controllers.CategoryControl.index()
+POST    /addCategory                controllers.CategoryControl.addCategory()
+#GET    /borrowBook                controllers.Application.borrowResource(userid: String, resourceId: String)
+GET     /borrowBook/:userId/:resourceId   controllers.Application.borrowResource(userId:String, resourceId:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
