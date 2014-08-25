@@ -1,4 +1,23 @@
-This is your new Play application
+Library of Awesomeness
 =====================================
 
-This file will be packaged with your application, when using `play dist`.
+
+This application is written using Play framework and a bit of scala notations on the view side.
+
+To Run this application kindly install a recent version of play framework on your system. www.playframework.com
+-Open the project directory on your terminal and type "Play run" to build project on server.
+-browse to http://localhost:9000/
+
+you should now be able to see the Interface.
+
+::Capabilities::
+- It uses th H2 in memory database and all the tables will be created and dummy data will be inserted of startup
+- A new user profile is logged into the session on refresh
+- User can create new sections/shelves and categories
+- User can add new resource to the Library and specify the shelf  or category they belong
+- User can delete the Resource
+- User can borrow available resources displayed at home page provided the are borrowable, unavailable resources are not displayed
+- user can search for unavailable resources and book them, he is added into the waiting list for these book
+- While searching user can search by either resource name, resource Author and name and author with a dash(-) between. eg. "The games of thrones-George Martin"
+- pls view application log to see if operations are success or failed cos the interface is not that friendly
+Enjoy

@@ -36,13 +36,14 @@
 
 <br>
 <br>
+<br>
 <div class="container">
     <p>List of resources in library</p>
     <table class="table table-bordered">
         <tr><th>Name</th><th>Author</th><th>Section</th><th>Shelf</th><th>Available</th><th>Manage</th></tr>
         @for(resource <- resources){
 
-        <tr><td>@resource.getName</td><td>@resource.getAuthor</td><td>@resource.getSection()</td><td>@resource.getName</td><td>@resource.getName</td><td><a href="">Delete</a> </td></tr>
+        <tr><td>@resource.getName</td><td>@resource.getAuthor</td><td>@resource.getSection().getName</td><td>@resource.getShelf.getName</td><td>@resource.isAvailable</td><td><a href="@routes.Application.deleteResource(resource.getId)">Delete</a> </td></tr>
         }
 
 
@@ -50,9 +51,9 @@
     <!--<ul id="stuff">routes.CategoryControl.deleteCategory(section.getId())</ul>-->
 </div>
 }{
-<h2>Admin</h2>
+<h2>Menu</h2>
 <ul>
-    <li><h3><a href="/">Search resources</a></h3></li>
+    <li><h3><a href="/">Home</a></h3></li>
     <li><h3><a href="/addSection">Manage Section</a></h3></li>
     <li><h3><a href="/addCategory">Manage Category</a></h3></li>
     <li><h3><a href="/addResource">Add Resource</a></h3></li>

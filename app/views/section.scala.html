@@ -9,23 +9,26 @@
     <input type="submit">
 
 </form>
-        <br>
-        <div class="container">
-<p>List of Sections in library</p>
-        <table class="table table-bordered">
-            <tr><th>Name</th><th>borrowable</th><th>Manage</th></tr>
-                @for(section <- Sections){
+<br><br><br>
+<div class="container">
+    <p>List of Sections in library</p>
+    <table class="table table-bordered">
+        <tr><th>Name</th><th>borrowable</th><th>Manage</th></tr>
+        @for(section <- Sections){
 
-            <tr><td>@section.getName</td><td>@section.isBorrowable</td><td><a href="routes.SectionControl.deleteSection(section.getId)">Delete</a> </td></tr>
-                }
+        <tr><td>@section.getName</td><td>@section.isBorrowable</td><td><a href="routes.SectionControl.deleteSection(section.getId)">Delete</a> </td></tr>
+        }
 
 
-        </table>
-<!--<ul id="stuff"></ul>-->
-        </div>
+    </table>
+    <!--<ul id="stuff"></ul>-->
+</div>
 }{
-<h1>Admin</h1>
-<h3><a href="/">Resource</a></h3>
-
-<h3><a href="/addSection">Manage Section</a></h3>
+<h2>Menu</h2>
+<ul>
+    <li><h3><a href="/">Home</a></h3></li>
+    <li><h3><a href="/addSection">Manage Section</a></h3></li>
+    <li><h3><a href="/addCategory">Manage Category</a></h3></li>
+    <li><h3><a href="/addResource">Add Resource</a></h3></li>
+</ul>
 }

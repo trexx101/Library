@@ -1,26 +1,25 @@
 @(user: User, resources: List[Resource])
 
-@main("Library of Awesomes") {
-        <p>welcome @user.getName</p>
-        #{loginStatus.scala /}
-<h1>Search Lib</h1>
+@main("Library of Awesomess") {
+<p class="lead">Welcome (@user.getName)!</p>
+<h1>Search Library</h1>
 <script src='@routes.Assets.at("javascripts/index.js")'></script>
 
-<form action="@routes.Application.searchResource()" method="post">
+<form action="@routes.Application.searchResource()" method="post" class="form-inline">
     <div class="form-group">
-        <label>Search Name</label>
-        <input name="name"></div>
+        <label>Search resources</label>
+        <input name="name"  class="form-control"></div>
 
-    <input type="submit">
+    <input type="submit" class="btn btn-default">
 
 </form>
+<br><br><br>
 <p>List of resources in library</p>
 <div class="container">
-    <p>List of Categories in library</p>
     <table class="table table-bordered table-condensed">
         <tr>
             <th>Name</th>
-            <th>availability</th>
+            <th>Availability</th>
             <th>Manage</th>
         </tr>
         @for(res <- resources){
@@ -28,7 +27,12 @@
         <tr>
             <td>@res.getName BY @res.getAuthor</td>
             <td>@res.isAvailable</td>
+            @if(res.isAvailable){
             <td><a href="@routes.Application.borrowResource(user.getId,res.getId)">Borrow</a></td>
+            }else{
+            <td><a href="@routes.Application.bookResource(user.getId,res.getId)">Book it</a></td>
+            }
+
         </tr>
         }
 
@@ -38,9 +42,9 @@
 </div>
 <ul id="stuff">
     }{
-    <h1>Admin</h1>
+    <h1>menu</h1>
     <ul>
-        <li><h3><a href="/">Search resources</a></h3></li>
+        <li><h3><a href="/">Home</a></h3></li>
         <li><h3><a href="/addSection">Manage Section</a></h3></li>
         <li><h3><a href="/addCategory">Manage Category</a></h3></li>
         <li><h3><a href="/addResource">Add Resource</a></h3></li>

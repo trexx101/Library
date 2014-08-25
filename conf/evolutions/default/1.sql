@@ -33,6 +33,12 @@ create table user (
   constraint pk_user primary key (id))
 ;
 
+create table waiting_list (
+  id                        varchar(255) not null,
+  date                      timestamp,
+  constraint pk_waiting_list primary key (id))
+;
+
 create sequence category_seq;
 
 create sequence resource_seq;
@@ -40,6 +46,8 @@ create sequence resource_seq;
 create sequence section_seq;
 
 create sequence user_seq;
+
+create sequence waiting_list_seq;
 
 alter table resource add constraint fk_resource_section_1 foreign key (section_id) references section (id) on delete restrict on update restrict;
 create index ix_resource_section_1 on resource (section_id);
@@ -60,6 +68,8 @@ drop table if exists section;
 
 drop table if exists user;
 
+drop table if exists waiting_list;
+
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists category_seq;
@@ -69,4 +79,6 @@ drop sequence if exists resource_seq;
 drop sequence if exists section_seq;
 
 drop sequence if exists user_seq;
+
+drop sequence if exists waiting_list_seq;
 

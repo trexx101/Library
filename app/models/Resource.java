@@ -71,19 +71,13 @@ public class Resource extends Model{
         this.available = available;
     }
 
- /*   public List<User> getWaitingList() {
-        return waitingList;
-    }
 
-    public void setWaitingList(List<User> waitingList) {
-        this.waitingList = waitingList;
-    }*/
-
-    public Resource(String name, String author, Section section, Category shelf) {
+    public Resource(String name, String author, Section section, Category shelf, Boolean available) {
         this.name = name;
         this.author = author;
         this.section = section;
         this.shelf = shelf;
+        this.setAvailable(available);
     }
 
     public String getName() {
@@ -103,9 +97,7 @@ public class Resource extends Model{
         this.id = id;
     }
 
-    public static Finder<String,Resource> find = new Finder<String,Resource>(
-            String.class, Resource.class
-    );
+    public static Finder<String,Resource> find = new Finder<String,Resource>(String.class, Resource.class);
 
     @Override
     public String toString() {

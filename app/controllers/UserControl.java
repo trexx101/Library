@@ -35,7 +35,12 @@ public class UserControl extends Controller {
     public static User getUser() {
         //get user from session
         String id = new SessionManager().get("login");
-        User user = User.find.byId(id);
+        User user = null;
+        try {
+            user = User.find.byId(id);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         return user;
     }
 }
